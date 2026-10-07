@@ -8,7 +8,8 @@
 </head>
 <body>
     <button class="bg-blue-400">Hello</button>
-      <button class="bg-pink-400 border-2 border-dotted">Button</button>
+      <button class="bg-pink-400 border-2 border-dotted hover:bg-pink-500 rounded-md ">Button</button>
+
       
 </body>
 
