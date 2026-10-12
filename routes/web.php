@@ -6,3 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'index'])-> name('home'); 
 Route::get('/buttons', [PublicController::class, 'buttons'])-> name('buttons');
 Route::get('/post/{post}', [PublicController::class, 'post'])-> name('post');
+
+route::get('/admin/posts', [PostController::class, 'index'])-> name('posts.index');
