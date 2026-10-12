@@ -23,7 +23,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="/buttons">Buttons</a></li>
+            <li><a href="{{ route('buttons') }}">Buttons</a></li>
             <li>
                 <details>
                     <summary>Parent</summary>
