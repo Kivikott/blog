@@ -15,6 +15,10 @@ class PostController extends Controller
     {
         //
     }
+        /** @var App\Models\User $user */
+        $user = Auth::user();
+        $posts = $user->posts()->latest()->paginate(16);
+        return view('posts.index', compact('posts'));
 
     /**
      * Show the form for creating a new resource.
@@ -32,12 +36,26 @@ class PostController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      */
     public function show(Post $post)
     {
-        //
+         $post = new Post($request->validated());
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        $post->user()->associate(Auth::user());
+        $post->save();
+        return redirect()->route('posts.index');
+    }
+
+       /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -53,7 +71,11 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+          // $post->title = $request->validated('title');
+        // $post->body = $request->validated('body');
+        //$post->fill($request->validated());
+        $post->update($request->validated());
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -61,6 +83,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+         $post->delete();
+        return redirect()->route('posts.index');
     }
 }
