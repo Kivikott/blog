@@ -12,6 +12,9 @@ Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
 
 Route::get('/secure', [PublicController::class, 'index'])->name('secure')->middleware(['auth', 'password.confirm']);
 
+Route::get('/', function () {
+    return view('pages.home');
+});
 // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/admin/posts/create', [PostController::class, 'create'])->name('posts.create');
 // Route::post('/admin/posts', [PostController::class, 'store'])->name('posts.store');
